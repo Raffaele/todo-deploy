@@ -5,7 +5,6 @@ import { useTodoContext } from "./TodoContext";
 import {
   PropsWithChildren,
   useCallback,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
