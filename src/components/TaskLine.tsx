@@ -24,20 +24,20 @@ const LiWrapper = ({
   maxIndex: number;
 }>) => (
   <li className="p-2 border-b border-gray-200 flex ">
-    <div className="flex flex-col pr-5 justify-between">
+    <div className="flex flex-col pr-5 justify-between gap-0.5">
       <button
-        className="text-xs border radius cursor-pointer rounded-sm px-1"
+        className="btn text-xs"
         disabled={index === 0}
         onClick={() => onMove(-1)}
       >
-        UP
+        &and;
       </button>
       <button
-        className="text-xs border radius cursor-pointer rounded-sm px-1 disabled:cursor-not-allowed disabled:opacity-30"
-        disabled={index === maxIndex}
+        className="btn text-xs"
+        disabled={index === maxIndex - 1}
         onClick={() => onMove(1)}
       >
-        DOWN
+        &or;
       </button>
     </div>
     <div className="flex-1 flex flex-col md:flex-row justify-between disabled:cursor-not-allowed disabled:opacity-30">
@@ -81,11 +81,11 @@ export const TaskLine = ({ task, index, maxIndex }: Props) => {
           onChange={(e) => setTaskName(e.target.value)}
           ref={inputRef}
         />
-        <div className="flex gap-1">
-          <button className="btn" onClick={handleSaveTaskLabel}>
+        <div className="flex gap-1 items-center">
+          <button className="btn w-22" onClick={handleSaveTaskLabel}>
             Save
           </button>
-          <button className="btn" onClick={() => setIsEditMode(false)}>
+          <button className="btn w-22" onClick={() => setIsEditMode(false)}>
             Cancel
           </button>
         </div>
@@ -107,11 +107,11 @@ export const TaskLine = ({ task, index, maxIndex }: Props) => {
         />
         <span className="text-gray-700">{task.title}</span>
       </label>
-      <div className="flex gap-1">
-        <button className="btn" onClick={() => removeTask(task.id)}>
+      <div className="flex gap-1 items-center">
+        <button className="btn w-22" onClick={() => removeTask(task.id)}>
           Delete
         </button>
-        <button className="btn" onClick={handleEnableEditMode}>
+        <button className="btn w-22" onClick={handleEnableEditMode}>
           Rename
         </button>
       </div>
