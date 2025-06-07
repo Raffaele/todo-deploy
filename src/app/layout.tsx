@@ -4,6 +4,14 @@ import "./globals.css";
 import { TodoProviderWrapper } from "@/components/TodoContext";
 import { MainHeader } from "@/components/MainHeader";
 import { MainFooter } from "@/components/MainFooter";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +38,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
       >
-        <TodoProviderWrapper>
-          <MainHeader />
-          <main className="flex-1 w-full max-w-6xl mx-auto border-2 border-gray-200 flex flex-col min-h-0">
-            {children}
-          </main>
-          <MainFooter />
-        </TodoProviderWrapper>
+        <ClerkProvider>
+          <TodoProviderWrapper>
+            <MainHeader />
+            <SignedOut>
+              <SignInButton mode="modal" />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <main className="flex-1 w-full max-w-6xl mx-auto border-2 border-gray-200 flex flex-col min-h-0">
+                {children}
+              </main>
+              <MainFooter />
+            </SignedIn>
+          </TodoProviderWrapper>
+        </ClerkProvider>
       </body>
     </html>
   );
