@@ -22,7 +22,7 @@ export const MainHeader = () => {
       <h1 className="text-5xl font-bold py-4 text-center text-empty-text">
         TODO LIST
       </h1>
-      <div className="w-16">A</div>
+      <div className="w-16"></div>
     </header>
   );
 };
